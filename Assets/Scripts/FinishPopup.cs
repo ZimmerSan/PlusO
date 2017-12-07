@@ -8,15 +8,16 @@ public class FinishPopup : MonoBehaviour {
 	public UI2DSprite hero, sign;
 
 	public Sprite oSprite, plusSprite;
+	public Sprite oHeroSprite, plusHeroSprite;
 
 	// Use this for initialization
 	void Start () {
-		Sign.TYPE turn = LevelController.current.getTurn ();
+		Sign.TYPE turn = LevelController.current.finishSign;
 		if (turn == Sign.TYPE.O) {
-			hero.sprite2D = LevelController.current.heroO.GetComponentInChildren<UI2DSprite>().sprite2D;
+			hero.sprite2D = oHeroSprite;
 			sign.sprite2D = oSprite;
 		} else {
-			hero.sprite2D = LevelController.current.heroPlus.GetComponentInChildren<UI2DSprite>().sprite2D;
+			hero.sprite2D = plusHeroSprite;
 			sign.sprite2D = plusSprite;
 		}
 	}

@@ -64,33 +64,23 @@ public class FieldSmall : MonoBehaviour {
 	}
 
 	public Sign.TYPE isFinished() {
-		Debug.Log ("1 - " + cells [1].getSign ());
-		Debug.Log ("2 - " + cells [2].getSign ());
-		Debug.Log ("3 - " + cells [3].getSign ());
-		Debug.Log ("4 - " + cells [4].getSign ());
-		Debug.Log ("5 - " + cells [5].getSign ());
-		Debug.Log ("6 - " + cells [6].getSign ());
-		Debug.Log ("7 - " + cells [7].getSign ());
-		Debug.Log ("8 - " + cells [8].getSign ());
-		Debug.Log ("9 - " + cells [9].getSign ());
-
-		if (cells [1].getSign () == cells [2].getSign () && cells [1].getSign () == cells [3].getSign ())
+		if (cells [1].getSign () != Sign.TYPE.NONE && cells [1].getSign () == cells [2].getSign () && cells [1].getSign () == cells [3].getSign ())
 			return cells [1].getSign ();
-		if (cells [4].getSign () == cells [5].getSign () && cells [4].getSign () == cells [6].getSign ())
+		if (cells [4].getSign () != Sign.TYPE.NONE && cells [4].getSign () == cells [5].getSign () && cells [4].getSign () == cells [6].getSign ())
 			return cells [4].getSign ();
-		if (cells [7].getSign () == cells [8].getSign () && cells [7].getSign () == cells [9].getSign ())
+		if (cells [7].getSign () != Sign.TYPE.NONE && cells [7].getSign () == cells [8].getSign () && cells [7].getSign () == cells [9].getSign ())
 			return cells [7].getSign ();
 
-		if (cells [1].getSign () == cells [4].getSign () && cells [1].getSign () == cells [7].getSign ())
+		if (cells [1].getSign () != Sign.TYPE.NONE && cells [1].getSign () == cells [4].getSign () && cells [1].getSign () == cells [7].getSign ())
 			return cells [1].getSign ();
-		if (cells [2].getSign () == cells [5].getSign () && cells [2].getSign () == cells [8].getSign ())
+		if (cells [2].getSign () != Sign.TYPE.NONE && cells [2].getSign () == cells [5].getSign () && cells [2].getSign () == cells [8].getSign ())
 			return cells [2].getSign ();
-		if (cells [3].getSign () == cells [6].getSign () && cells [3].getSign () == cells [9].getSign ())
+		if (cells [3].getSign () != Sign.TYPE.NONE && cells [3].getSign () == cells [6].getSign () && cells [3].getSign () == cells [9].getSign ())
 			return cells [3].getSign ();
 
-		if (cells [1].getSign () == cells [5].getSign () && cells [1].getSign () == cells [9].getSign ())
+		if (cells [1].getSign () != Sign.TYPE.NONE && cells [1].getSign () == cells [5].getSign () && cells [1].getSign () == cells [9].getSign ())
 			return cells [1].getSign ();
-		if (cells [3].getSign () == cells [5].getSign () && cells [3].getSign () == cells [7].getSign ())
+		if (cells [3].getSign () != Sign.TYPE.NONE && cells [3].getSign () == cells [5].getSign () && cells [3].getSign () == cells [7].getSign ())
 			return cells [3].getSign ();
 
 		return Sign.TYPE.NONE;

@@ -29,12 +29,12 @@ public class Cell : MonoBehaviour {
 	}
 
 	public void _onClick() {
-		if (!LevelController.current.isFinished () && !this.isFilled ()) {
-			if (parent.isActive ()) fill (LevelController.current.getTurn ());
+		if (!LevelController.current.isFinished () && !this.isFilled () && parent.isActive ()) {
+			fill (LevelController.current.getTurn ());
 
 			Sign.TYPE res = parent.isFinished ();
 			if (res != Sign.TYPE.NONE) {
-				LevelController.current.finish ();
+				LevelController.current.finish (res);
 				return;
 			}
 			

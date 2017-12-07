@@ -5,8 +5,8 @@ using UnityEngine;
 public class LevelController : MonoBehaviour {
 
 	public static LevelController current;
-	private Sign.TYPE turn;
-	public UIWidget heroPlus, heroO;
+	public Sign.TYPE turn, finishSign;
+	public GameObject heroPlus, heroO;
 	public FieldBig fieldBig;
 
 	public GameObject finishPrefab;
@@ -29,12 +29,19 @@ public class LevelController : MonoBehaviour {
 		score.Add (Sign.TYPE.PLUS, 0);
 	}
 
-	void disable (UIWidget widget) {
-		widget.alpha = 0.5f;
+	void disable (GameObject go) {
+		setOpacity (go, 0.5f);
 	}
 
-	void enable (UIWidget widget) {
-		widget.alpha = 1f;
+	void enable (GameObject go) {
+		setOpacity (go, 1f);
+	}
+
+	void setOpacity(GameObject go, float opacity) {
+		SpriteRenderer[] renderers = go.GetComponentsInChildren<SpriteRenderer> ();
+		foreach (SpriteRenderer r in renderers) {
+			r.color = new Vector4 (r.color.r, r.color.g, r.color.b, opacity);
+		}	
 	}
 
 	public Sign.TYPE getTurn() {
@@ -53,8 +60,11 @@ public class LevelController : MonoBehaviour {
 		}	
 	}
 
-	public void finish() {
+	public void finish(Sign.TYPE sign) {
+		Debug.Log ("Finish sign = " + sign);
 		finished = true;
+		finishSign = sign;
+
 		GameObject parent = UICamera.first.transform.parent.gameObject;
 		GameObject obj = NGUITools.AddChild(parent, finishPrefab);
 	}
