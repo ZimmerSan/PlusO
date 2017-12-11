@@ -1,11 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Controllers\MusicController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Objects\FieldBig.cs">
     <Files>
-      <File FileName="Assets\Scripts\UI\SettingsPopup.cs" Line="38" Column="3" />
-      <File FileName="Assets\Scripts\Controllers\LevelController.cs" Line="12" Column="32" />
-      <File FileName="Assets\Scripts\MyBtn.cs" Line="22" Column="22" />
-      <File FileName="Assets\Scripts\Controllers\MusicController.cs" Line="51" Column="42" />
+      <File FileName="Assets\Scripts\Controllers\LevelController.cs" Line="64" Column="18" />
+      <File FileName="Assets\Scripts\UI\FinishPopup.cs" Line="27" Column="18" />
+      <File FileName="Assets\Scripts\UI\ExitConfirmPopup.cs" Line="15" Column="18" />
+      <File FileName="Assets\Scripts\MyBtn.cs" Line="23" Column="18" />
+      <File FileName="Assets\Scripts\Controllers\PopupController.cs" Line="29" Column="2" />
+      <File FileName="Assets\Scripts\UI\SettingsPopup.cs" Line="51" Column="18" />
+      <File FileName="Assets\Scripts\Objects\FieldBig.cs" Line="30" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

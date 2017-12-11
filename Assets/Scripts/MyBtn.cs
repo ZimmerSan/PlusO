@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class MyBtn : MonoBehaviour {
 
 	public GameObject settingsPrefab;
+	public GameObject exitConfirmPrefab;
 
 	public void onExitClick() {
 		MusicController.current.playClick ();
-		SceneManager.LoadScene ("Start");
+		PopupController.current.openPopup (exitConfirmPrefab);
 	}
 
 	public void onPlayClick() {
@@ -19,7 +20,6 @@ public class MyBtn : MonoBehaviour {
 
 	public void showSettings() {
 		MusicController.current.playClick ();
-		GameObject parent = UICamera.first.transform.parent.gameObject;
-		GameObject obj = NGUITools.AddChild(parent, settingsPrefab);	
+		PopupController.current.openPopup (settingsPrefab);
 	}
 }

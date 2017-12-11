@@ -31,6 +31,7 @@ public class SettingsPopup : MonoBehaviour {
 	}
 		
 	public void onSoundClick() {
+		MusicController.current.playClick ();
 		soundEnabled = !soundEnabled;
 		MusicController.current.toggleSound(soundEnabled);
 		UI2DSprite sprite = soundButton.GetComponent<UI2DSprite>();
@@ -38,20 +39,15 @@ public class SettingsPopup : MonoBehaviour {
 	}
 
 	public void onMusicClick() {
+		MusicController.current.playClick ();
 		musicEnabled = !musicEnabled;
 		MusicController.current.toggleMusic(musicEnabled);
 		UI2DSprite sprite = musicButton.GetComponent<UI2DSprite>();
 		sprite.sprite2D = musicEnabled ? musicOnSprite : musicOffSprite;
 	}
 
-	public void onMenuClick() {
-		MusicController.current.playClick ();
-		Destroy(this.gameObject);
-		SceneManager.LoadScene("Start");
-	}
-
 	public void onCloseClick() {
 		MusicController.current.playClick ();
-		Destroy(this.gameObject);
+		PopupController.current.closePopup (this.gameObject);
 	}
 }

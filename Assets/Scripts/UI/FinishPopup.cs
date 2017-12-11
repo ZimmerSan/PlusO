@@ -24,12 +24,13 @@ public class FinishPopup : MonoBehaviour {
 
 	public void onReplayClick() {
 		MusicController.current.playClick ();
-		Destroy(this.gameObject);
+		PopupController.current.closePopup (this.gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	public void onCloseClick() {
 		MusicController.current.playClick ();
+		PopupController.current.closePopup (this.gameObject);
 		SceneManager.LoadScene ("Start");
 	}
 }

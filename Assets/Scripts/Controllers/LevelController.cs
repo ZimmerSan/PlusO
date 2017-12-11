@@ -61,9 +61,7 @@ public class LevelController : MonoBehaviour {
 		finishSign = sign;
 
 		MusicController.current.playVictorySound ();
-
-		GameObject parent = UICamera.first.transform.parent.gameObject;
-		GameObject obj = NGUITools.AddChild(parent, finishPrefab);
+		PopupController.current.openPopup (finishPrefab);
 	}
 
 	public bool isFinished() {
