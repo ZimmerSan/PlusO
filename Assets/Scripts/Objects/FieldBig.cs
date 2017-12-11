@@ -4,33 +4,16 @@ using UnityEngine;
 
 public class FieldBig : MonoBehaviour {
 
-	public const int BORDER_SIZE = 25;
-
 	Dictionary<int, FieldSmall> fields;
 
 	// Use this for initialization
 	void Start () {
 		fields = new Dictionary<int, FieldSmall> ();
-		for (int i = 1; i <= 9; i++) {
-			fields.Add (i, createField (i)); 
-		}	
-	}
 
-	private FieldSmall createField(int index) {
-		int[] props = Helper.getProps (index);
-		int multX = props[0], multY = props[1];
-
-		var field = this.gameObject.AddChild (ObjectFactory.getInstance ().fieldPrefab);
-		UI2DSprite sprite = field.transform.GetComponent<UI2DSprite> ();
-
-		Vector3 pos = this.transform.position;
-		pos.x += (sprite.width + BORDER_SIZE)*multX;
-		pos.y += (sprite.height + BORDER_SIZE)*multY - 35;
-		field.transform.localPosition = pos;
-
-		FieldSmall fs = field.transform.GetComponent<FieldSmall> ();
-		fs.Initialize (index);
-		return fs;
+		FieldSmall[] childrenFields = this.GetComponentsInChildren<FieldSmall> ();
+		foreach (FieldSmall f in childrenFields) {
+			fields.Add (f.getIndex (), f);
+		}
 	}
 	
 	public void activateField(int index) {

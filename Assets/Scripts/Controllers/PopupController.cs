@@ -13,7 +13,6 @@ public class PopupController : MonoBehaviour {
 	}
 
 	public void openPopup(GameObject popup) {
-		Debug.Log ("Is? = " + isPopupOpen);
 		if (!isPopupOpen) {
 			GameObject parent = UICamera.first.transform.parent.gameObject;
 			GameObject obj = NGUITools.AddChild(parent, popup);

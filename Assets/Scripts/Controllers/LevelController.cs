@@ -32,7 +32,7 @@ public class LevelController : MonoBehaviour {
 		setOpacity (go, 1f);
 	}
 
-	void setOpacity(GameObject go, float opacity) {
+	public void setOpacity(GameObject go, float opacity) {
 		SpriteRenderer[] renderers = go.GetComponentsInChildren<SpriteRenderer> ();
 		foreach (SpriteRenderer r in renderers) {
 			r.color = new Vector4 (r.color.r, r.color.g, r.color.b, opacity);

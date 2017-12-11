@@ -4,63 +4,33 @@ using UnityEngine;
 
 public class FieldSmall : MonoBehaviour {
 
-	public const int BORDER_SIZE = 6;
 	public const float DISABLED_OPACITY = 0.4f; 
 
 	Dictionary<int, Cell> cells;
 
-	private int index;
-	private bool active;
+	public int index;
+	public bool active;
 
 	// Use this for initialization
 	void Start () {
 		cells = new Dictionary<int, Cell> ();
-		for (int i = 1; i <= 9; i++) {
-			cells.Add (i, createCell (i)); 
+
+		Cell[] childrenCells = this.GetComponentsInChildren<Cell> ();
+		foreach (Cell c in childrenCells) {
+			cells.Add (c.getIndex (), c);
 		}
-	}
 
-	private Cell createCell(int index) {
-		int[] props = Helper.getProps (index);
-		int multX = props[0], multY = props[1];
-
-		var cell = this.gameObject.AddChild (ObjectFactory.getInstance ().cellPrefab);
-		UI2DSprite sprite = cell.transform.GetComponent<UI2DSprite> ();
-		Vector3 pos = this.transform.position;
-		pos.x += (sprite.width + BORDER_SIZE)*multX;
-		pos.y += (sprite.height + BORDER_SIZE)*multY;
-		cell.transform.localPosition = pos;
-
-		Cell c = cell.transform.GetComponent<Cell> ();
-		c.Initialize (index, this);
-		return c;
-	}
-	
-	public void Initialize(int index) {
-		this.index = index;
-		Debug.Log ("index = " + index);
-		if (index == 5)
-			setActive (true);
-		else
-			setActive (false);
+		setActive (active);
 	}
 
 	public void setActive(bool flag) {
 		if (flag) {
 			this.active = true;
-			this.GetComponent<UIWidget> ().alpha = 1f;
+			LevelController.current.setOpacity (this.gameObject, 1f);
 		} else {
 			this.active = false;
-			this.GetComponent<UIWidget> ().alpha = DISABLED_OPACITY;
+			LevelController.current.setOpacity (this.gameObject, DISABLED_OPACITY);
 		}
-	}
-
-	public bool isActive() {
-		return active;
-	}
-
-	public int getIndex() {
-		return index;
 	}
 
 	public Sign.TYPE isFinished() {
@@ -85,4 +55,8 @@ public class FieldSmall : MonoBehaviour {
 
 		return Sign.TYPE.NONE;
 	}
+
+	public bool isActive() { return active; }
+
+	public int getIndex() { return index; }
 }

@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour {
 
-	private int index;
-	private FieldSmall parent;
+	public int index;
+	public FieldSmall parent;
 	private Sign.TYPE mySign;
 
+	public Sprite oSprite, plusSprite;
+
 	public void fill(Sign.TYPE signType) {
-		var sign = this.gameObject.AddChild (ObjectFactory.getInstance ().signPrefab);
+		GameObject sign = null;
+		if (signType == Sign.TYPE.O) sign = GameObject.Instantiate(ObjectFactory.getInstance ().signOPrefab);
+		else if (signType == Sign.TYPE.PLUS) sign = GameObject.Instantiate(ObjectFactory.getInstance ().signPlusPrefab);
+
+		Vector3 pos = this.transform.position;
+		pos.z -= 1;
+
 		sign.transform.GetComponent<Sign> ().Initialize (signType);
-		sign.transform.localPosition = this.transform.position;
+		sign.transform.localPosition = pos;
+	
 		MusicController.current.playSignSound (signType);
 		this.mySign = signType;
 	}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectFactory : MonoBehaviour {
 	private static ObjectFactory instance; // Needed
 
-	public GameObject signPrefab;
+	public GameObject signPlusPrefab, signOPrefab;
 	public GameObject cellPrefab;
 	public GameObject fieldPrefab;
 
